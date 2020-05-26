@@ -14,6 +14,9 @@ const CustomNavbar = ({ currentUser, setCurrentUser }) => {
           <Link className="nav-link" to="/">
             Home
           </Link>
+          <Link className="nav-link" to="/articles">
+            Articles
+          </Link>
         </Nav>
         <Nav>
           {currentUser === null ?
