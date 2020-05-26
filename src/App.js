@@ -1,10 +1,10 @@
 import React from 'react';
-import { LoginForm } from './components';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { LoginPage } from './pages';
 
 function App() {
   return (
-    <LoginForm />
+    <LoginPage />
   );
 }
 
