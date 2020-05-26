@@ -2,15 +2,17 @@ import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import { Layout } from '../components';
 
-const HomePage = ({ currentUser }) => {
+const HomePage = ({ currentUser, setCurrentUser }) => {
   return (
-    <Layout>
+    <Layout
+      {...{ currentUser, setCurrentUser }}
+    >
       <Jumbotron>
         <h1>
           {currentUser === null ?
             'Bienvenue!'
           :
-            `Bienvenue, ${currentUser}!`
+            `Bienvenue, ${currentUser.name}!`
           }
         </h1>
         <p>

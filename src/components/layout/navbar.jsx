@@ -1,24 +1,32 @@
 import React from 'react';
 import { Navbar, Button, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const CustomNavbar = ({ currentUser, setCurrentUser }) => {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">React-Signin</Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand>React-Signin</Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
         </Nav>
         <Nav>
           {currentUser === null ?
-            <Button variant="primary">
-              Se connecter
-            </Button>
+            <Link to="/login">
+              <Button variant="primary">
+                Se connecter
+              </Button>
+            </Link>
           :
             <>
-              <Nav.Link>{currentUser.username}</Nav.Link>
+              <Link className="nav-link" to="/profile">
+                {currentUser.username}
+              </Link>
               <Button variant="secondary" onClick={() => setCurrentUser(null)}>
                 Se déconnecter
               </Button>
