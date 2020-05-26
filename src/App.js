@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { LoginPage } from './pages';
 
-function App() {
+const App = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+
   return (
-    <LoginPage />
+    <LoginPage {...{ currentUser, setCurrentUser }} />
   );
 }
 

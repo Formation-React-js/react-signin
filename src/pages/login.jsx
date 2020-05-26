@@ -1,12 +1,14 @@
 import React from 'react';
 import { Layout, LoginForm } from '../components';
 
-const LoginPage = ({ currentUser }) => {
+const LoginPage = ({ currentUser, setCurrentUser }) => {
   return (
     <Layout
-      currentUser={currentUser}
+      {...{ currentUser, setCurrentUser }}
     >
-      <LoginForm />
+      <LoginForm
+        {...{ currentUser, setCurrentUser }}
+      />
     </Layout>
   )
 }

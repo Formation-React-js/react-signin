@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { fakeLogin } from '../utils';
 
-const LoginForm = () => {
+const LoginForm = ({ setCurrentUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -13,7 +13,7 @@ const LoginForm = () => {
         event.preventDefault();
         setErrorMessage('')
         fakeLogin(username, password)
-        .then(response => console.log(response))
+        .then(response => setCurrentUser(response))
         .catch(error => setErrorMessage("Identifiants invalides!"));
       }}
     >
