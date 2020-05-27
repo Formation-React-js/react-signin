@@ -17,7 +17,7 @@ const users = [
     email: 'user@test.com',
     name: 'Jean-Marie Youzeur',
   },
-]
+];
 
 export default (username, password) => new Promise( (resolve, reject) => {
   for (const user of users) {
@@ -25,5 +25,5 @@ export default (username, password) => new Promise( (resolve, reject) => {
       resolve(user);
     }
   }
-  reject();
+  reject({ message: 'Invalid credentials' });
 })

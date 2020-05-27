@@ -2,12 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Layout } from '../components';
 import { ListGroup } from 'react-bootstrap';
-import { useRecoilState } from 'recoil';
-import { currentUserState } from '../state';
+import { withCurrentUser } from '../state/current-user';
 
-const ProfilePage = () => {
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
-
+const ProfilePage = ({ currentUser }) => {
   if (currentUser === null) {
     return <Redirect to="/" />;
   }
@@ -23,4 +20,4 @@ const ProfilePage = () => {
   );
 }
 
-export default ProfilePage;
+export default withCurrentUser(ProfilePage);

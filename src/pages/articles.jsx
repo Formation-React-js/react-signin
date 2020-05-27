@@ -2,13 +2,13 @@ import React from 'react';
 import { articles } from '../data';
 import { Layout, Article } from '../components';
 
-const ArticlesPage = ({ currentUser, setCurrentUser }) => {
+const ArticlesPage = () => {
   return (
     <Layout>
       <ul>
       {articles.map( (article, index) =>
         <li key={index}>
-          <Article {...article} {...{currentUser, setCurrentUser}} />
+          <Article {...article} />
         </li>
       )}
       </ul>

@@ -1,12 +1,10 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import { Layout } from '../components';
-import { useRecoilState } from 'recoil';
-import { currentUserState } from '../state';
+import { connect } from 'react-redux';
+import { withCurrentUser } from '../state/current-user';
 
-const HomePage = () => {
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
-
+const HomePage = ({ currentUser }) => {
   return (
     <Layout>
       <Jumbotron>
@@ -29,4 +27,4 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default withCurrentUser(HomePage);

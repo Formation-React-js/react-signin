@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { fakeLogin } from '../utils';
 import { Redirect } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { currentUserState } from '../state';
+import store from '../state';
+import { withCurrentUser } from '../state/current-user';
 
-const LoginForm = () => {
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+const LoginForm = ({ currentUser }) => {
+  const setCurrentUser = (newUser) => store.dispatch({
+    type: 'SET_CURRENTUSER',
+    data: newUser,
+  });
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,7 +26,7 @@ const LoginForm = () => {
         setErrorMessage('')
         fakeLogin(username, password)
         .then(response => setCurrentUser(response))
-        .catch(error => setErrorMessage("Identifiants invalides!"));
+        .catch(error => setErrorMessage(error.message));
       }}
     >
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
@@ -50,4 +53,4 @@ const LoginForm = () => {
   );
 }
 
-export default LoginForm;
+export default withCurrentUser(LoginForm);

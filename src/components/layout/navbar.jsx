@@ -1,11 +1,13 @@
 import React from 'react';
 import { Navbar, Button, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { currentUserState } from '../../state';
+import { connect } from 'react-redux';
+import store from '../../state';
 
-const CustomNavbar = () => {
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+const CustomNavbar = ({ currentUser }) => {
+  const resetCurrentUser = () => store.dispatch({
+    type: 'RESET_CURRENTUSER',
+  });
 
   return (
     <Navbar bg="light" expand="lg">
@@ -34,7 +36,7 @@ const CustomNavbar = () => {
               <Link className="nav-link" to="/profile">
                 {currentUser.username}
               </Link>
-              <Button variant="secondary" onClick={() => setCurrentUser(null)}>
+              <Button variant="secondary" onClick={() => resetCurrentUser()}>
                 Se déconnecter
               </Button>
             </>
@@ -45,4 +47,6 @@ const CustomNavbar = () => {
   );
 }
 
-export default CustomNavbar;
+const mapStateToProps = (state) => ({ currentUser: state.currentUser });
+
+export default connect(mapStateToProps)(CustomNavbar);
