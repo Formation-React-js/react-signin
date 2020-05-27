@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { fakeLogin } from '../utils';
 import { Redirect } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { currentUserState } from '../state';
 
-const LoginForm = ({ currentUser, setCurrentUser }) => {
+const LoginForm = () => {
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   if (currentUser !== null) {
     return <Redirect to="/" />;
-  }
+  } 
 
   return (
     <Form

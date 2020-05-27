@@ -2,13 +2,11 @@ import React from 'react';
 import Navbar from './navbar';
 import { Container } from 'react-bootstrap';
 
-const Layout = ({ children, currentUser, setCurrentUser }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <header>
-        <Navbar
-          {...{ currentUser, setCurrentUser }}
-        />
+        <Navbar />
       </header>
       <Container>
         <main>

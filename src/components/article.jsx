@@ -1,7 +1,11 @@
 import React from 'react';
 import { Card, ButtonGroup, Button } from 'react-bootstrap';
+import { useRecoilState } from 'recoil';
+import { currentUserState } from '../state';
 
-const Article = ({ title, content, date, author, currentUser, setCurrentUser }) => {
+const Article = ({ title, content, date, author }) => {
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
   return (
     <article className="mb-4">
       <Card>

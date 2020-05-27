@@ -1,8 +1,12 @@
 import React from 'react';
 import { Navbar, Button, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { currentUserState } from '../../state';
 
-const CustomNavbar = ({ currentUser, setCurrentUser }) => {
+const CustomNavbar = () => {
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
   return (
     <Navbar bg="light" expand="lg">
       <Link to="/">

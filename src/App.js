@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { LoginPage, HomePage, ProfilePage, ArticlesPage } from './pages';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState(null);
-
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" render={props => <HomePage {...{ ...props, currentUser, setCurrentUser }} />} />
-        <Route exact path="/login" render={props => <LoginPage {...{ ...props, currentUser, setCurrentUser }} />} />
-        <Route exact path="/profile" render={props => <ProfilePage {...{ ...props, currentUser, setCurrentUser }} />} />
-        <Route exact path="/articles" render={props => <ArticlesPage {...{ ...props, currentUser, setCurrentUser }} />} />
-      </Switch>
-    </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route exact path="/articles" component={ArticlesPage} />
+        </Switch>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
 

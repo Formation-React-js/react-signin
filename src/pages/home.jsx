@@ -1,12 +1,14 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import { Layout } from '../components';
+import { useRecoilState } from 'recoil';
+import { currentUserState } from '../state';
 
-const HomePage = ({ currentUser, setCurrentUser }) => {
+const HomePage = () => {
+  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+
   return (
-    <Layout
-      {...{ currentUser, setCurrentUser }}
-    >
+    <Layout>
       <Jumbotron>
         <h1>
           {currentUser === null ?

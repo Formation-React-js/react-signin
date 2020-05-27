@@ -4,9 +4,7 @@ import { Layout, Article } from '../components';
 
 const ArticlesPage = ({ currentUser, setCurrentUser }) => {
   return (
-    <Layout
-      {...{currentUser, setCurrentUser}}
-    >
+    <Layout>
       <ul>
       {articles.map( (article, index) =>
         <li key={index}>
